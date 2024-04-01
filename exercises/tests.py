@@ -4,7 +4,6 @@ from exercises.models import Exercise
 
 
 class ExerciseTest(APITestCase):
-
     @classmethod
     def setUp(cls):
         cls.user1_username = "user1"
@@ -13,7 +12,8 @@ class ExerciseTest(APITestCase):
 
         cls.exercise1_data = {
             "name": "Подтягивания",
-            "description": "Упражнение на мышцы спины и рук, выполняемое подтягиванием тела вверх до касания или приближения подбородка к перекладине.",
+            "description": "Упражнение на мышцы спины и рук, выполняемое подтягиванием тела вверх\
+            до касания или приближения подбородка к перекладине.",
             "type_exercise": "Силовые",
             "difficulty": "Средний",
             "duration": "5 минут",
@@ -22,7 +22,8 @@ class ExerciseTest(APITestCase):
 
         cls.exercise2_data = {
             "name": "Отжимания",
-            "description": "Упражнение на мышцы груди, рук и плеч, выполняемое отталкиванием тела от пола до полного выпрямления рук.",
+            "description": "Упражнение на мышцы груди, рук и плеч, выполняемое отталкиванием тела\
+            от пола до полного выпрямления рук.",
             "type_exercise": "Силовые",
             "difficulty": "Для начинающих",
             "duration": "5 минут",
@@ -171,14 +172,14 @@ class ExerciseTest(APITestCase):
             "/api/v1/exercises/", data=self.exercise1_data, headers={"Authorization": f"JWT {token}"}
         )
 
-        self.assertEqual(response.status_code, 201)  # Данные соданны
+        self.assertEqual(response.status_code, 201)  # Данные созданны
 
         response = self.client.get("/api/v1/exercises/", headers={"Authorization": f"JWT {token}"})
 
-        self.assertEqual(len(response.data["result"]), 2)  # Без филтрации мы получаем 2 объекта
+        self.assertEqual(len(response.data["result"]), 2)  # Без фильтрации мы получаем 2 объекта
 
         response = self.client.get("/api/v1/exercises/?difficulty=Средний", headers={"Authorization": f"JWT {token}"})
 
-        self.assertEqual(len(response.data["result"]), 1)  # С филтрацией мы получаем 1 объект
+        self.assertEqual(len(response.data["result"]), 1)  # С фильтрацией мы получаем 1 объект
 
         self.assertNotIn("Для начинающих", response.data)  # Данных с уровнем сложности "Для начинающих" нету

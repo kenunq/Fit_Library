@@ -72,7 +72,7 @@ python manage.py migrate
 python manage.py loaddata fixtures/data_dump.json
 ```
 
-**9.Запустите сервер**
+**9. Запустите сервер**
 
 ```
 python manage.py runserver
