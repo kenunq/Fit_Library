@@ -29,6 +29,8 @@ class ExercisePagination(PageNumberPagination):
 
 @extend_schema(tags=["Exercise"])
 class ExerciseViewSet(viewsets.ModelViewSet):
+    """Представлениe для реализации CRUD для модели Exercise"""
+
     serializer_class = ExerciseSerializer
     queryset = Exercise.objects.all()
     pagination_class = ExercisePagination
