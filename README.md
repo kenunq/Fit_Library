@@ -123,4 +123,11 @@ docker compose up --build
 http://127.0.0.1:8000/api/schema/swagger-ui/
 ```
 
+**user-admin:**
+
+```
+username: admin
+password: admin
+```
+
 **Для остановки контейнера нажмите `CTRL+C` или `CMD+C`(для mac) в консоли**
