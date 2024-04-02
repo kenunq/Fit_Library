@@ -22,5 +22,8 @@ class Exercise(models.Model):
     duration = models.CharField(max_length=50, verbose_name="Продолжительность выполнения")
     repeats = models.CharField(max_length=100, verbose_name="Количество повторений и подходов")
 
+    class Meta:
+        ordering = ["id"]
+
     def __str__(self):
         return self.name
