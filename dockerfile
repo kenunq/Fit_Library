@@ -12,3 +12,4 @@ RUN pip install --upgrade pip && pip install -r requirements.txt
 
 ADD . /Fit_Library/
 
+RUN chmod +x ./docker/backend/web-entrypoint.sh
